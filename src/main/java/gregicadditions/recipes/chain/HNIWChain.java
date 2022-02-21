@@ -4,9 +4,10 @@ import gregicadditions.item.GAMetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class HNIWChain {
 
@@ -143,6 +144,13 @@ public class HNIWChain {
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+
+        // Se + 2O -> SeO2
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Selenium)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(SeleniumOxide.getItemStack(3))
+                .duration(100).EUt(30).buildAndRegister();
 
         //SeO2 + H2O -> H2SeO3
         CHEMICAL_RECIPES.recipeBuilder()
@@ -315,7 +323,7 @@ public class HNIWChain {
                 .inputs(CrudeHexanitroHexaaxaisowurtzitane.getItemStack())
                 .fluidInputs(Ethylenediamine.getFluid(1000))
                 .inputs(SilicaGel.getItemStack())
-                .outputs(HexanitroHexaaxaisowurtzitane.getItemStack())
+                .outputs(HexanitroHexaaxaisowurtzitane.getItemStack(16))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
